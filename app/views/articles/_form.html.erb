@@ -1,0 +1,31 @@
+<%= form_with model: article do |form| %>
+  <div class = 'mb-4'>
+    <div>
+      <%= form.label :title %>
+    </div>
+    <div>
+      <%= form.text_field :title, :class => 'border border-solid border-slate-300' %>
+    </div>
+  </div>
+
+  <div class='mb-4'>
+    <div>
+      <%= form.label :body %>
+    </div>
+    <div>
+      <%= form.text_area :body, :class => 'border border-solid border-slate-300' %>
+    </div>
+    <% article.errors.full_messages_for(:body) do |message| %>
+      <div><%= message %></div>
+      <% end %>
+  </div>
+
+  <div class='mb-4'>
+    <%= form.label :status %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
+
+  <div>
+    <%= form.submit :class => 'text-red-600 font-semibold px-4 py-2 border border-red-300 cursor-pointer hover:bg-red-600 hover:text-white transition-colors' %>
+  </div>
+<% end %>
